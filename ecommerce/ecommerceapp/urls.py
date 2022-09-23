@@ -1,7 +1,12 @@
 from django.contrib import admin
 from django.urls import path
-from .views import Tamazonview
+from . import views
 
 urlpatterns = [
-    path('ecommerce/',Tamazonview.as_view())
+    # path('ecommerce/',Tamazonview.as_view()),
+    path('', views.ApiOverview, name='home'),
+    path('create/', views.add_items, name='add-items'),
+    path('all/', views.view_items, name='view_items'),
+    path('update/<int:pk>/', views.update_items, name='update-items'),
+    path('item/<int:pk>/delete/', views.delete_items, name='delete-items'),
 ]
